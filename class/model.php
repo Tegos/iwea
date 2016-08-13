@@ -49,9 +49,9 @@ class  Model extends Helper
     {
         $data = array();
         if ($search) {
-            $sql = "SELECT * FROM site WHERE `name` LIKE '%{$search}%'";
+            $sql = "SELECT * FROM site WHERE `name` LIKE '%{$search}%' AND `status` = 1";
         } else {
-            $sql = 'SELECT * FROM site';
+            $sql = 'SELECT * FROM site WHERE `status` = 1';
         }
 
         $query = $this->db->query($sql);

@@ -3,6 +3,7 @@ $start = microtime(true);
 include(__DIR__ . '/class/autoloader.php');
 
 new AutoLoader();
+$model = new  Model();
 
 $db = new  MMySQLi (Config::get('hostname'), Config::get('username'),
     Config::get('password'), Config::get('database'));
@@ -17,14 +18,10 @@ foreach ($query->rows as $result) {
 
 
 // sites
-$sites = array();
-$sql = 'SELECT * FROM site';
-$query = $db->query($sql);
-foreach ($query->rows as $result) {
-    $sites[] = $result;
-}
+$sites = $model->getSites();
 
 foreach ($sites as $site) {
+    //if ($site['name'] == 'YahooWeather')
     if (class_exists($site['name'])) {
         $site_class = new $site['name']();
 
