@@ -9,7 +9,8 @@ final class  Config
             'username' => 'noisy2',
             'password' => 'tegos',
             'database' => 'noisy2_weather',
-            'default_city' => 3
+            'default_city' => 3,
+            'domen' => 'http://iwea.ml'
         );
 
     public static function get($key)

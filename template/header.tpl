@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/assets/css/style.css"/>
     <link rel="stylesheet" href="/assets/css/add.css"/>
     <meta name="yandex-verification" content="b1ee326afc347f89"/>
-
+    <link rel="canonical" href="<?php echo $canonical; ?>"/>
 </head>
 
 
@@ -31,12 +31,12 @@
     <div class="site-header">
         <div class="container">
             <a href="/" class="branding">
-                <img src="/assets/images/logo.png" alt="" class="logo">
+                <img  src="/assets/images/logo.png" title="Logo iWea" alt="Logo iWea" class="logo"/>
 
                 <div class="logo-type">
                     <h1 class="site-title">iWEA</h1>
-                    <small class="site-description">Веб-застосування для порівняння прогнозу погоди за різними сайтами
-                    </small>
+                    <h2 class="site-description">Веб-застосування для порівняння прогнозу погоди за різними сайтами
+                    </h2>
                 </div>
             </a>
 

@@ -46,14 +46,7 @@
             </select>
 
             <span class="space"></span>
-            <!--span>Сайт: </span>
-            <select id="site-int">
-                <?php foreach($sites as $site) { ?>
-                <option><?php echo $site['name']; ?></option>
-                <?php } ?>
-            </select>
 
-            <span class="space"></span-->
             <button id="analyze" class="button">Ok</button>
             <br/><br/><br/>
             <div id="table-result-analyze"></div>
@@ -83,7 +76,7 @@
                 <?php foreach ($sites as $site) { ?>
                 <li><input value="<?php echo $site['id']; ?>" type="checkbox" id="cb<?php echo $site['id']; ?>"/>
                     <label for="cb<?php echo $site['id']; ?>">
-                        <img title="<?php echo $site['name']; ?>"
+                        <img title="<?php echo $site['name']; ?>" alt="<?php echo $site['name']; ?>"
                              src="<?php echo $site['image_url']; ?>"/></label>
                 </li>
                 <? } ?>

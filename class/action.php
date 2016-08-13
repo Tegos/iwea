@@ -63,11 +63,9 @@ class Action extends Helper
             'Різниця температур',
         );
 
-        $description = 'iWea - Веб-застосування для порівняння прогнозу погоди за різними сайтами.
-                       iWea - порівнюй, аналізуй погоду і отримуй достовірний результат.';
+        $description = 'iWea-порівнюй, аналізуй погоду і отримуй достовірний результат.';
         $generation_description = " Погода у {$city_name} на 7 днів,
-        детальний прогноз погоди на 7 днів у {$city_name}.
-        Метеопрогноз від iWea  у Львівській області";
+        детальний прогноз погоди на 7 днів у {$city_name}.";
 
         $description .= $generation_description;
 
@@ -75,6 +73,7 @@ class Action extends Helper
         $keywords = array_map('mb_strtolower', $keywords);
 
         $view->keywords = implode(',', $keywords);
+
         $view->description = $description;
 
 
@@ -93,13 +92,14 @@ class Action extends Helper
         $view->categories = json_encode($weather['categories']);
         $view->series = json_encode($weather['series']);
         $view->city_name = $weather['city_name'];
-        $view->title = 'iWEA - Веб-застосування для порівняння прогнозу погоди за різними сайтами';
+        $view->title = 'iWEA - Веб-застосування для порівняння прогнозу погоди';
         $view->day_now = $day_now;
         $view->forecasts = $weather['forecasts'];
         $view->now_month = $now_month;
         $view->now_month_d = $now_month_d;
 
         $view->site_id = $this->model->getCookieSiteId();
+        $view->canonical = Config::get('domen');
 
         $view->chart = $view->render('chart');
 
@@ -162,7 +162,7 @@ class Action extends Helper
         $view->series = json_encode($weather['series']);
         $view->series_max = json_encode($weather['series_max']);
         $view->city_name = $weather['city_name'];
-        $view->title = 'iWEA - Веб-застосування для порівняння прогнозу погоди за різними сайтами';
+        $view->title = 'iWEA - Погода з усіх джерел';
         $view->day_now = $day_now;
         $view->forecasts = $weather['forecasts'];
         $view->now_month = $now_month;
