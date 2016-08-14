@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/assets/css/add.css"/>
     <meta name="yandex-verification" content="b1ee326afc347f89"/>
     <link rel="canonical" href="<?php echo $canonical; ?>"/>
+    <link rel="icon" href="/assets/images/icons/iwea.png"/>
 </head>
 
 
@@ -31,7 +32,7 @@
     <div class="site-header">
         <div class="container">
             <a href="/" class="branding">
-                <img  src="/assets/images/logo.png" title="Logo iWea" alt="Logo iWea" class="logo"/>
+                <img src="/assets/images/logo.png" title="Logo iWea" alt="Logo iWea" class="logo"/>
 
                 <div class="logo-type">
                     <h1 class="site-title">iWEA</h1>
