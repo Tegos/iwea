@@ -39,12 +39,16 @@ $(function () {
         $('#select-source').ddslick({
             data: dd,
             width: '100%',
-            imagePosition: "left",
-            //defaultSelectedIndex: 0,
+            imagePosition: 'left',
             onSelected: function (data) {
                 var selData = data.selectedData;
-                if (selData.value != site_id)
-                    location = '/?action=set_site_id&site_id=' + selData.value;
+
+                if (selData.value !== site_id) {
+                    var loc = '/?action=set_site_id&site_id=' + selData.value;
+                    $.get(loc, function () {
+                        location.reload();
+                    });
+                }
                 //console.log(selData);
             }
         });

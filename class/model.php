@@ -81,8 +81,9 @@ class  Model extends Helper
 
     public function getCookieSiteId()
     {
+        //$this->var_dump($_COOKIE['site_id']);
         $site_id = (int)(isset($_COOKIE['site_id']) ? $_COOKIE['site_id'] : 1);
-        if ($site_id <= 0) {
+        if ($site_id < 1) {
             $site_id = 1;
         }
         return $site_id;

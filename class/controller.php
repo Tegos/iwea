@@ -108,7 +108,10 @@ class Controller extends Helper
 
             case 'set_site_id':
                 $site_id = $_GET['site_id'];
+                $this->var_dump($site_id);
+                //die();
                 setcookie('site_id', (int)$site_id);
+                usleep(10);
                 header("Location: /");
                 break;
 

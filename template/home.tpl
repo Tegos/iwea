@@ -10,13 +10,12 @@
         </form>
 
 
-
     </div>
 
     <div class="container">
         <select id="select-source"></select>
         <script>
-            site_id = <?php echo $site_id; ?>;
+            site_id = '<?php echo $site_id; ?>';
         </script>
     </div>
 
