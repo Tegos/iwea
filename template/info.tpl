@@ -5,17 +5,15 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="/">Головна</a>
-            <span>Інформація</span>
+            <span>Список джерел</span>
         </div>
     </div>
 
     <div class="fullwidth-block">
         <div class="container">
-            <h2 class="section-title">Список джерел</h2>
+            <h1 class="section-title">Список джерел</h1>
 
             <div class="row">
-
-
                 <table border="1" class="source-table">
 
                     <?php foreach ($sites as $site) { ?>

@@ -111,7 +111,6 @@ class Controller extends Helper
                 $this->var_dump($site_id);
                 //die();
                 setcookie('site_id', (int)$site_id);
-                usleep(10);
                 header("Location: /");
                 break;
 

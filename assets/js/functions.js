@@ -201,11 +201,6 @@ function getGroup() {
 
     var n = 7;
 
-    //for (var k = 0; k < n; ++k)
-    //    for (var i = 0; i < n; ++i)
-    //        for (var j = 0; j < n; ++j)
-    //            matrix[i][j] = Math.min(matrix[i][j], matrix[i][k] + matrix[k][j]);
-
     var next = Create2DArray(7, 7);
     for (var i = 0; i < n; ++i)
         for (var u = 0; u < n; ++u)
@@ -228,7 +223,8 @@ function getGroup() {
         groupOne.push(ind);
     }
 
-    for (var i = 0; i < 7; i++) {
+    // i = count sites (may changes)
+    for (var i = 0; i < 10; i++) {
         if (groupOne.indexOf(i) == -1) {
             groupTwo.push(i + 1);
         }
@@ -276,11 +272,14 @@ function getGroup() {
 
         $('#table-result-group').html(table);
 
-        //console.log(gr_1);
-        //console.log(gr_2);
+        console.log(gr_1);
+        console.log(gr_2);
 
         group_1 = [];
         group_2 = [];
+
+        console.dir(series_groups);
+
         series_groups.forEach(function (it) {
             gr_1.forEach(function (itt) {
                 if (it.name == itt) {
@@ -294,6 +293,9 @@ function getGroup() {
                 }
             });
         });
+
+        console.log(group_1);
+        console.log(group_2);
 
         initChartGroups();
 

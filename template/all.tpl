@@ -9,7 +9,8 @@
 
 <div class="fullwidth-block">
     <div class="container all-text-header">
-        <h2 class="section-title">Середня температура</h2>
+        <h1 class="section-title">Погода з усіх джерел</h1>
+        <h2 class="text-center">Середня температура</h2>
     </div>
 </div>
 

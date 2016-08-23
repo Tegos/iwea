@@ -190,6 +190,7 @@ class  Model extends Helper
                     AND DATE(`date`) = '{$start_date->format('Y-m-d')}'
                     AND (`date_write` BETWEEN '{$end_date->format('Y-m-d')}'
                       AND '{$start_date_plus_day->format('Y-m-d')}')
+                    AND `status` = 1
                     GROUP BY   date(date_write),site_id
                     order by site_id, date_write";
 
@@ -243,6 +244,7 @@ class  Model extends Helper
                     AND DATE(`date_write`) = '{$start_date->format('Y-m-d')}'
                     AND (`date`
                       BETWEEN '{$start_date->format('Y-m-d')}' AND '{$end_date->format('Y-m-d')}')
+                    AND `status` = 1
                     group by site_id, `date`
                     order by site_id, `date`";
 

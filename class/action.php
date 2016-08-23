@@ -8,7 +8,7 @@
  */
 class Action extends Helper
 {
-    var $model;
+    private $model;
 
     public function __construct($model)
     {
@@ -88,7 +88,7 @@ class Action extends Helper
         $now_month = $this->getMonthUkr($date_now->format('M'));
         $now_month_d = $date_now->format('d');
 
-
+        $view->is_home = true;
         $view->categories = json_encode($weather['categories']);
         $view->series = json_encode($weather['series']);
         $view->city_name = $weather['city_name'];
@@ -110,21 +110,21 @@ class Action extends Helper
         $search = isset($_GET['search']) ? $_GET['search'] : '';
         $results = $this->model->getCities($search);
 
-        $view->title = 'iWEA - Пошук';
+        $view->title = 'iWEA — Пошук';
         $view->results = $results;
 
     }
 
     public function info(&$view)
     {
-        $view->title = 'iWEA - Інформація';
+        $view->title = 'iWEA — Список джерел';
         $view->sites = $this->model->getSites();
 
     }
 
     public function auth_reg(&$view)
     {
-        $view->title = 'iWEA - Авторизація';
+        $view->title = 'iWEA — Авторизація';
         if ($this->model->getMessage('reg_success')) {
             $view->result = 'Вітаємо! Ви успішно зареєструвались.';
         } else {
@@ -143,9 +143,7 @@ class Action extends Helper
             $view->error = false;
         }
 
-        $view->title = 'iWEA - реєстрація';
-
-
+        $view->title = 'iWEA — реєстрація';
     }
 
 
@@ -162,7 +160,7 @@ class Action extends Helper
         $view->series = json_encode($weather['series']);
         $view->series_max = json_encode($weather['series_max']);
         $view->city_name = $weather['city_name'];
-        $view->title = 'iWEA - Погода з усіх джерел';
+        $view->title = 'iWEA — Погода з усіх джерел';
         $view->day_now = $day_now;
         $view->forecasts = $weather['forecasts'];
         $view->now_month = $now_month;
@@ -184,7 +182,7 @@ class Action extends Helper
         $view->series = json_encode($weather['series']);
         $view->series_max = json_encode($weather['series_max']);
         $view->city_name = $weather['city_name'];
-        $view->title = 'iWEA - аналітика';
+        $view->title = 'iWEA — аналітика';
 
 
         $view->sites = $this->model->getSites();

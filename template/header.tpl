@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="/assets/css/style.css"/>
     <link rel="stylesheet" href="/assets/css/add.css"/>
     <meta name="yandex-verification" content="b1ee326afc347f89"/>
+    <meta name="yandex-verification" content="eb6d57b876ddf2e1"/>
+
     <link rel="canonical" href="<?php echo $canonical; ?>"/>
     <link rel="icon" href="/assets/images/icons/iwea.png"/>
 </head>
@@ -35,7 +37,12 @@
                 <img src="/assets/images/logo.png" title="Logo iWea" alt="Logo iWea" class="logo"/>
 
                 <div class="logo-type">
+                    <?php if(isset($is_home)){ ?>
                     <h1 class="site-title">iWEA</h1>
+                    <?php }else{ ?>
+                    <h2 class="site-title">iWEA</h2>
+                    <?php } ?>
+
                     <h2 class="site-description">Веб-застосування для порівняння прогнозу погоди за різними сайтами
                     </h2>
                 </div>
@@ -45,7 +52,7 @@
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="/?action=home">Головна</a></li>
-                    <li class="menu-item"><a href="/?action=info">Інформація</a></li>
+                    <li class="menu-item"><a href="/?action=info">Список джерел</a></li>
                     <li class="menu-item"><a href="/?action=all">Погода з усіх джерел</a></li>
                     <li class="menu-item"><a href="/?action=analytics">Аналітика</a></li>
                     <?php /* ?>

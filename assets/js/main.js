@@ -63,7 +63,7 @@ $(function () {
 
     $('#source-list-sites input').change(function () {
         var ul = $('#source-list-sites');
-        var id_site = $(this).val();
+        //var id_site = $(this).val();
 
         var chart = $('#container-chart-diff').highcharts();
 
@@ -71,7 +71,7 @@ $(function () {
         var ids = [];
         ul.find('input:checked').each(function () {
             var inp = $(this);
-            ids.push(inp.val() - 1);
+            ids.push(inp.val());
         });
 
         if (ids.length == 2) {

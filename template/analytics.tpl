@@ -9,12 +9,12 @@
 </div>
 
 
-<div class="fullwidth-block no-padding">
+<div class="fullwidth-block ">
     <div class="container all-text-header">
-        <h2 class="section-title">Класифікація даних сайтів прогнозу погоди</h2>
+        <h1 class="section-title">Аналітика</h1>
+        <h2 class="text-center">Класифікація даних сайтів прогнозу погоди</h2>
 
         <br/>
-        <!--div id="table-result-input"></div-->
 
         <div class="text-center">Матриця відстаней між графіками максимальних температур</div>
 
@@ -36,7 +36,7 @@
     <hr/>
     <div class="fullwidth-block no-padding light-block-analyze">
         <div class="container all-text-header">
-            <h2 class="section-title">Порівняльний аналіз даних прогнозу погоди різних сайтів</h2>
+            <h2 class="text-center">Порівняльний аналіз даних прогнозу погоди різних сайтів</h2>
 
             <span>Інтервал: </span>
             <select id="interval">
@@ -61,7 +61,7 @@
 
     <div class="fullwidth-block ">
         <div class="container">
-            <h2 class="section-title">Різниця температур між різними джерелами</h2>
+            <h2 class="text-center">Різниця температур між різними джерелами</h2>
             <br/>
             <h4>
                 Щоб отримати різницю температур, оберіть два джерела зі списку.
@@ -73,13 +73,15 @@
     <div class="forecast-table">
         <div class="container">
             <ul id="source-list-sites">
-                <?php foreach ($sites as $site) { ?>
-                <li><input value="<?php echo $site['id']; ?>" type="checkbox" id="cb<?php echo $site['id']; ?>"/>
-                    <label for="cb<?php echo $site['id']; ?>">
-                        <img title="<?php echo $site['name']; ?>" alt="<?php echo $site['name']; ?>"
+                <?php $ki = 0; foreach ($sites as $site) { ?>
+                <li><input value="<?php echo $ki; ?>"
+                           type="checkbox" id="cb<?php echo $ki; ?>"/>
+                    <label for="cb<?php echo $ki; ?>">
+                        <img title="<?php echo $site['name']; ?>"
+                             alt="<?php echo $site['name']; ?>"
                              src="<?php echo $site['image_url']; ?>"/></label>
                 </li>
-                <? } ?>
+                <?php $ki++; } ?>
             </ul>
         </div>
     </div>
@@ -89,8 +91,6 @@
 
 
     <script>
-        //var cats = <?php echo $categories;    ?>;
-        //var series = <?=$series?>;
         var series_groups = <?=$series_max?>;
         var group_1,group_2;
 
