@@ -33,7 +33,7 @@ Disallow: /*image*
 Disallow: /*price*
 
 
-Host: http://iwea.ml/
+Host: iwea.ml
 
 User-agent: GooglebotВ­Image
 Disallow: /
