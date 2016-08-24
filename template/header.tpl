@@ -25,6 +25,8 @@
 
     <link rel="canonical" href="<?php echo $canonical; ?>"/>
     <link rel="icon" href="/assets/images/icons/iwea.png"/>
+    <link rel="shortcut icon" href="/assets/images/icons/iwea.png"/>
+    <link rel="icon" href="/assets/images/icons/iwea.png" type="image/png"/>
 </head>
 
 
