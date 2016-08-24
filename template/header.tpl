@@ -51,10 +51,10 @@
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="/?action=home">Головна</a></li>
-                    <li class="menu-item"><a href="/?action=info">Список джерел</a></li>
-                    <li class="menu-item"><a href="/?action=all">Погода з усіх джерел</a></li>
-                    <li class="menu-item"><a href="/?action=analytics">Аналітика</a></li>
+                    <li class="menu-item current-menu-item"><a href="/">Головна</a></li>
+                    <li class="menu-item"><a href="/page/info">Список джерел</a></li>
+                    <li class="menu-item"><a href="/page/all">Погода з усіх джерел</a></li>
+                    <li class="menu-item"><a href="/page/analytics">Аналітика</a></li>
                     <?php /* ?>
                     <?php if (!$user){ ?>
                     <li class="menu-item"><a href="/?action=auth_reg">Авторизація Реєстрація</a></li>

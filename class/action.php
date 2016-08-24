@@ -112,6 +112,7 @@ class Action extends Helper
 
         $view->title = 'iWEA — Пошук';
         $view->results = $results;
+        $view->canonical = Config::get('domen');
 
     }
 
@@ -119,7 +120,7 @@ class Action extends Helper
     {
         $view->title = 'iWEA — Список джерел';
         $view->sites = $this->model->getSites();
-
+        $view->canonical = Config::get('domen') . '/page/info';
     }
 
     public function auth_reg(&$view)
@@ -156,6 +157,7 @@ class Action extends Helper
         $now_month_d = $date_now->format('d');
 
 
+        $view->canonical = Config::get('domen') . '/page/all';
         $view->categories = json_encode($weather['categories']);
         $view->series = json_encode($weather['series']);
         $view->series_max = json_encode($weather['series_max']);
@@ -184,7 +186,7 @@ class Action extends Helper
         $view->city_name = $weather['city_name'];
         $view->title = 'iWEA — аналітика';
 
-
+        $view->canonical = Config::get('domen') . '/page/analytics';
         $view->sites = $this->model->getSites();
 
 

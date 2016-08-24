@@ -1,3 +1,9 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+RewriteRule ^page/([a-zA-Z]+)$ /?action=$1&
 
 <ifModule mod_gzip.c>
 mod_gzip_on Yes
