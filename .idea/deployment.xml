@@ -2,20 +2,6 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="Weather_Noisy2" createEmptyFolders="true" uploadOnCheckin="9b42327b-0719-4d78-85ce-b19365dc8ddf" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="3planeta 139.59.207.30">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="3planeta 6.12">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="AddEvoLubr">
         <serverdata>
           <mappings>
@@ -115,6 +101,13 @@
         </serverdata>
       </paths>
       <paths name="yousellcenter.eu">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="zattoch_ukraine">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
