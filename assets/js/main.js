@@ -2,8 +2,6 @@
  * Created by IBAH on 08.05.2016.
  */
 
-var action = '';
-
 $(function () {
     try {
         initChartMin();

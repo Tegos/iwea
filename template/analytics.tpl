@@ -89,7 +89,6 @@
     <?php echo $chart_diff; ?>
 
 
-
     <script>
         var series_groups = <?=$series_max?>;
         var group_1,group_2;
