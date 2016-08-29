@@ -106,20 +106,20 @@ class Helper
     public function getMonthUkr($month, $genitive = false, $low = false)
     {
         $trans = array(
-            "January" => "Січень",
-            "February" => "Лютий",
-            "March" => "Березень",
-            "April" => "Квітень",
+            "Jan" => "Січень",
+            "Feb" => "Лютий",
+            "Mar" => "Березень",
+            "Apr" => "Квітень",
             "May" => "Травень",
             "Jun" => "Червень",
             "Jul" => "Липень",
-            "August" => "Серпень",
-            "September" => "Вересень",
-            "October" => "Жовтень",
-            "November" => "Лиспопад",
-            "December" => "Грудень",
+            "Aug" => "Серпень",
+            "Sep" => "Вересень",
+            "Oct" => "Жовтень",
+            "Nov" => "Лиспопад",
+            "Dec" => "Грудень",
         );
-
+        
         $result = strtr($month, $trans);
         if ($low)
             $result = mb_strtolower($result);
@@ -127,9 +127,10 @@ class Helper
         return $result;
     }
 
-    public function group_assoc($array, $key) {
+    public function group_assoc($array, $key)
+    {
         $return = array();
-        foreach($array as $v) {
+        foreach ($array as $v) {
             $return[$v[$key]][] = $v;
         }
         return $return;
