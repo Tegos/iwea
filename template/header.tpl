@@ -12,14 +12,7 @@
           content="<?php echo $description; ?>">
     <title><?php echo $title; ?></title>
 
-    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
-          rel="stylesheet" type="text/css"/>
-    <link href="/assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="/assets/css/easy-autocomplete.css"/>
-    <link rel="stylesheet" href="/assets/css/easy-autocomplete.themes.css"/>
-    <link rel="stylesheet" href="/assets/css/style.css"/>
-    <link rel="stylesheet" href="/assets/css/add.css"/>
     <meta name="yandex-verification" content="b1ee326afc347f89"/>
     <meta name="yandex-verification" content="eb6d57b876ddf2e1"/>
 
@@ -27,6 +20,7 @@
     <link rel="icon" href="/assets/images/icons/iwea.png"/>
     <link rel="shortcut icon" href="/assets/images/icons/iwea.png"/>
     <link rel="icon" href="/assets/images/icons/iwea.png" type="image/png"/>
+    <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon"/>
 </head>
 
 
