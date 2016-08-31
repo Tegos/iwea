@@ -15,7 +15,7 @@
 
 
     </div>
-</footer> <!-- .site-footer -->
+</footer>
 </div>
 
 
@@ -46,13 +46,19 @@
         });
 
         // css
-        yepnope.injectCss('/assets/css/easy-autocomplete.css');
-        yepnope.injectCss('/assets/css/roboto.css');
 
-        yepnope.injectCss('/assets/css/style.css');
-        yepnope.injectCss('/assets/css/add.css');
 
-        yepnope.injectCss('/assets/fonts/font-awesome.min.css');
+        yepnope.injectCss('/assets/css/roboto.css', function () {
+
+            yepnope.injectCss('/assets/css/responsive.css');
+
+            yepnope.injectCss('/assets/css/easy-autocomplete.css');
+            yepnope.injectCss('/assets/css/style.css');
+            yepnope.injectCss('/assets/css/add.css');
+            yepnope.injectCss('/assets/fonts/font-awesome.min.css');
+        });
+
+
     }
 
 </script>
@@ -73,7 +79,7 @@
 <!--script async defer src="/assets/js/main.js"></script-->
 <!--script async defer src="/assets/js/chart_setting.js"></script-->
 
-<script>
+<!--script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -91,7 +97,21 @@
     ga('create', 'UA-80203069-1', 'auto');
     ga('send', 'pageview');
 
+
+
+</script-->
+
+<script>
+    window.ga = window.ga || function () {
+                (ga.q = ga.q || []).push(arguments)
+            };
+    ga.l = +new Date;
+    ga('create', 'UA-80203069-1', 'auto');
+    ga('send', 'pageview');
 </script>
+
+<!--script async src='//www.google-analytics.com/analytics.js'></script-->
+<script async src='/assets/js/analytics.js'></script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -117,7 +137,7 @@
                 };
         s.type = "text/javascript";
         s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+        s.src = "/assets/js/watch.js";
 
         if (w.opera == "[object Opera]") {
             d.addEventListener("DOMContentLoaded", f, false);

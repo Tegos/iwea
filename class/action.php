@@ -9,10 +9,12 @@
 class Action extends Helper
 {
     private $model;
+    private $file;
 
     public function __construct($model)
     {
         $this->model = $model;
+        $this->file = new File(3600 * 3);
     }
 
     public function header(&$view)

@@ -21,7 +21,36 @@
     <link rel="shortcut icon" href="/assets/images/icons/iwea.png"/>
     <link rel="icon" href="/assets/images/icons/iwea.png" type="image/png"/>
     <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon"/>
+
+    <!--link rel="stylesheet" href="/assets/css/style.css" media="all"/-->
+
 </head>
+
+<style>
+    html {
+        background: #fff;
+        color: #000 !important;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+
+    html,
+    button,
+    input,
+    select,
+    textarea {
+        font-family: Roboto;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .home-background {
+        background-image: url('/assets/images/banner.png');
+        background-size: cover;
+    }
+</style>
 
 
 <body>

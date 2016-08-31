@@ -8,20 +8,31 @@
  */
 class  Model extends Helper
 {
-    var $db;
+    private $db;
+    private $file;
 
     public function __construct()
     {
         $this->db = new  MMySQLi (Config::get('hostname'), Config::get('username'),
             Config::get('password'), Config::get('database'));
+        $this->file = new File(3600 * 3);
     }
 
     public function query($sql)
     {
         $data = array();
-        $query = $this->db->query($sql);
-        foreach ($query->rows as $result) {
-            $data[] = $result;
+
+        $sql_id = md5($sql);
+        $cache_result = $this->file->get($sql_id);
+        if (!$cache_result) {
+
+            $query = $this->db->query($sql);
+            foreach ($query->rows as $result) {
+                $data[] = $result;
+            }
+            $this->file->set($sql_id, $data);
+        } else {
+            $data = $cache_result;
         }
         return $data;
     }
