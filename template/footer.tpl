@@ -2,7 +2,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p class="colophon">© <?php echo date('Y'); ?>, Михавко Іван</p>
+                <p class="colophon">© <?php echo date('Y'); ?>, Михавко Іван
+
+                    <!--LiveInternet counter-->
+                    <script type="text/javascript">
+                        document.write("<a href='//www.liveinternet.ru/click' " +
+                                "target=_blank><img src='//counter.yadro.ru/hit?t50.6;r" +
+                                escape(document.referrer) + ((typeof(screen) == "undefined") ? "" :
+                                ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+                                        screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+                                ";h" + escape(document.title.substring(0, 80)) + ";" + Math.random() +
+                                "' alt='' title='LiveInternet' " +
+                                "border='0' width='31' height='31'><\/a>")
+                    </script><!--/LiveInternet-->
+                </p>
+
             </div>
             <div class="col-md-3 col-md-offset-1">
                 <!--div class="social-links">
@@ -150,6 +164,7 @@
     <div><img src="https://mc.yandex.ru/watch/38292185" style="position:absolute; left:-9999px;" alt="Yandex"/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
+
 
 
 </body>
