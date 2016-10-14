@@ -4,8 +4,7 @@
 
 
 $(window).load(function () {
-
-    initChartMin();
+    
 
     try {
         initChartMin();

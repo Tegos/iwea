@@ -24,7 +24,7 @@ class TheDarkSkyCompany extends Helper implements ISiteHelper
     {
         $lat = (float)$city['lat'];
         $lon = (float)$city['lon'];
-        $this->url = 'https://api.forecast.io/';
+        $this->url = 'https://api.darksky.net/';
         $this->url .= 'forecast/c91e8152e03c8e173c94908d269aa5c9/';
         $this->url .= "{$lat},{$lon}";
         $this->url .= '?units=si&lang=uk&exclude=[currently,minutely,hourly,alerts,flags]';

@@ -43,8 +43,8 @@ class  Model extends Helper
           SET site_id = {$data['site_id']},
           `city_id` = {$data['city_id']},
           `date` = '{$data['date']}',
-          `min_temp` = {$data['min_temp']},
-          `max_temp` = {$data['max_temp']}";
+          `min_temp` = '{$data['min_temp']}',
+          `max_temp` = '{$data['max_temp']}'";
 
         $this->db->query($sql);
     }
