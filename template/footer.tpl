@@ -42,11 +42,12 @@
 
 <script>
     function loadJSCss() {
-        yepnope.injectJs('/assets/js//highcharts.js', function () {
-            yepnope.injectJs('/assets/js/exporting.js');
-        });
+
 
         yepnope.injectJs('/assets/js/jquery-1.11.1.min.js', function () {
+            yepnope.injectJs('/assets/js//highcharts.js');
+            yepnope.injectJs('/assets/js/exporting.js');
+
             yepnope.injectJs('/assets/js/plugins.js');
 
             yepnope.injectJs('/assets/js/jquery.easy-autocomplete.js');
@@ -54,10 +55,12 @@
             yepnope.injectJs('/assets/js/app.js');
 
             yepnope.injectJs('/assets/js/functions.js');
+            yepnope.injectJs('/assets/js/chart_setting.js');
 
             yepnope.injectJs('/assets/js/main.js');
-            yepnope.injectJs('/assets/js/chart_setting.js');
+
         });
+
 
         // css
 
@@ -164,7 +167,6 @@
     <div><img src="https://mc.yandex.ru/watch/38292185" style="position:absolute; left:-9999px;" alt="Yandex"/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
-
 
 
 </body>
