@@ -26,7 +26,7 @@
                             <b><?php echo $site['name']; ?></b>
                         </td>
                         <td>
-                            <a href="<?php echo $site['url']; ?>">
+                            <a rel="nofollow" href="<?php echo $site['url']; ?>">
                                 <?php echo $site['url']; ?>
                             </a>
                         </td>
