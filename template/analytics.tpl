@@ -2,9 +2,11 @@
 
 
 <div class="container">
-    <div class="breadcrumb">
-        <a href="/">Головна</a>
-        <span>Аналітика</span>
+    <div class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="/">
+            <span itemprop="title">Головна</span>
+        </a>
+        <span itemprop="title">Аналітика</span>
     </div>
 </div>
 

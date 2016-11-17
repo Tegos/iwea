@@ -1,9 +1,12 @@
 <?php echo $header; ?>
 
 <div class="container">
-    <div class="breadcrumb">
-        <a href="/">Головна</a>
-        <span>Погода з усіх джерел</span>
+
+    <div class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a itemprop="url" href="/">
+            <span itemprop="title">Головна</span>
+        </a>
+        <span itemprop="title">Погода з усіх джерел</span>
     </div>
 </div>
 

@@ -3,9 +3,11 @@
 <main class="main-content">
 
     <div class="container">
-        <div class="breadcrumb">
-            <a href="/">Головна</a>
-            <span>Список джерел</span>
+        <div class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+            <a itemprop="url" href="/">
+                <span itemprop="title">Головна</span>
+            </a>
+            <span itemprop="title">Список джерел</span>
         </div>
     </div>
 
