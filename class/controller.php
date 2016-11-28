@@ -7,7 +7,7 @@ class Controller extends Helper
     var $files;
     var $path;
     var $arg;
-    var $model;
+    private $model;
     private $method;
 
 
@@ -15,6 +15,14 @@ class Controller extends Helper
     {
         $this->files = new File;
         $this->method = $path;
+
+
+        if (count($arg) < 1) {
+            if (isset($_GET['arg'])) {
+                $arg = $_GET['arg'];
+            }
+        }
+
         $this->arg = $arg;
 
         $this->model = new  Model();
@@ -50,7 +58,7 @@ class Controller extends Helper
         $action = strtolower($action);
         session_start();
         $view = new Template();
-        $act = new Action($this->model);
+        $act = new Action($this->model, $this->arg);
         $act->header($view);
 
         switch ($action) {
@@ -119,7 +127,6 @@ class Controller extends Helper
                 $act->home($view);
                 break;
         }
-
 
 
         $view->header = $view->render('header');

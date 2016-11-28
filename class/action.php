@@ -10,10 +10,12 @@ class Action extends Helper
 {
     private $model;
     private $file;
+    private $arg;
 
-    public function __construct($model)
+    public function __construct($model, $arg = array())
     {
         $this->model = $model;
+        $this->arg = $arg;
         $this->file = new File(3600 * 3);
     }
 
@@ -122,7 +124,7 @@ class Action extends Helper
     {
         $view->title = 'iWEA — Список джерел';
         $view->sites = $this->model->getSites();
-        $view->canonical = Config::get('domen') . '/page/info';
+        $view->canonical = Config::get('domen') . '/info';
     }
 
     public function auth_reg(&$view)
@@ -159,12 +161,28 @@ class Action extends Helper
         $now_month_d = $date_now->format('d');
 
 
-        $view->canonical = Config::get('domen') . '/page/all';
+        if (isset($this->arg)) {
+            try {
+                $get_string = $this->arg;
+                if (!empty($get_string)) {
+                    $get_string = $this->base64_url_decode($get_string);
+                    parse_str($get_string, $get_array);
+                    $this->arg = $get_array;
+                }
+
+            } catch (Exception $e) {
+                $this->arg = array();
+            }
+        }
+
+        //$this->var_dump($this->arg);
+
+        $view->canonical = Config::get('domen') . '/all';
         $view->categories = json_encode($weather['categories']);
         $view->series = json_encode($weather['series']);
         $view->series_max = json_encode($weather['series_max']);
         $view->city_name = $weather['city_name'];
-        $view->title = 'iWEA — Погода з усіх джерел';
+        $view->title = 'iWEA — Погода сьогодні';
         $view->day_now = $day_now;
         $view->forecasts = $weather['forecasts'];
         $view->now_month = $now_month;
@@ -188,7 +206,7 @@ class Action extends Helper
         $view->city_name = $weather['city_name'];
         $view->title = 'iWEA — аналітика';
 
-        $view->canonical = Config::get('domen') . '/page/analytics';
+        $view->canonical = Config::get('domen') . '/analytics';
         $view->sites = $this->model->getSites();
 
 

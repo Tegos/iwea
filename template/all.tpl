@@ -6,13 +6,13 @@
         <a itemprop="url" href="/">
             <span itemprop="title">Головна</span>
         </a>
-        <span itemprop="title">Погода з усіх джерел</span>
+        <span itemprop="title">Погода сьогодні</span>
     </div>
 </div>
 
 <div class="fullwidth-block">
     <div class="container all-text-header">
-        <h1 class="section-title">Погода з усіх джерел</h1>
+        <h1 class="section-title">Погода сьогодні</h1>
         <h2 class="text-center">Середня температура</h2>
     </div>
 </div>

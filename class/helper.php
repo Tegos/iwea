@@ -119,7 +119,7 @@ class Helper
             "Nov" => "Лиспопад",
             "Dec" => "Грудень",
         );
-        
+
         $result = strtr($month, $trans);
         if ($low)
             $result = mb_strtolower($result);
@@ -134,6 +134,16 @@ class Helper
             $return[$v[$key]][] = $v;
         }
         return $return;
+    }
+
+    public function base64_url_encode($input)
+    {
+        return strtr(base64_encode($input), '+/=', '-_~');
+    }
+
+    public function base64_url_decode($input)
+    {
+        return base64_decode(strtr($input, '-_~', '+/='));
     }
 
 
