@@ -6,13 +6,18 @@
         <a itemprop="url" href="/">
             <span itemprop="title">Головна</span>
         </a>
-        <span itemprop="title">Погода сьогодні</span>
+        <span itemprop="title"><?php echo $page_title; ?></span>
     </div>
 </div>
 
 <div class="fullwidth-block">
     <div class="container all-text-header">
-        <h1 class="section-title">Погода сьогодні</h1>
+        <h1 class="section-title"><?php echo $page_title; ?></h1>
+        <?php if($is_today): ?>
+        <a href="<?php echo $url_yesterday; ?>">
+            <span>Погода вчора</span>
+        </a>
+        <?php endif; ?>
         <h2 class="text-center">Середня температура</h2>
     </div>
 </div>
