@@ -127,6 +127,50 @@ class Action extends Helper
 		$view->canonical = Config::get('domen') . '/info';
 	}
 
+	public function sitemap()
+	{
+		// TODO: add custom page to sitemap
+		$sitemap = $this->file->get('sitemap');
+		$domen = Config::get('domen');
+		$days = (int)(365 / 2);
+
+		if (!$sitemap) {
+
+			$output = '<?xml version="1.0" encoding="UTF-8"?>';
+			$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">';
+
+			$date_start = new DateTime();
+			$date_start->modify("-{$days} days");
+
+			for ($i = 0; $i < $days; $i++) {
+				$f = $date_start->format('d-m-Y');
+				$array = array('d' => $f);
+				$param = http_build_query($array);
+				$param = $this->base64_url_encode($param);
+				$url = "$domen/all/$param";
+
+				$output .= '<url>';
+				$output .= '<loc>' . $url . '</loc>';
+				$output .= '<changefreq>daily</changefreq>';
+				$output .= '<priority>0.7</priority>';
+				$output .= '</url>';
+
+				$date_start->modify('+ 1day');
+			}
+
+
+			$output .= '</urlset>';
+
+			$this->file->set('sitemap', $output);
+			$sitemap = $output;
+		}
+
+		header('Content-Type: application/xml');
+		echo $sitemap;
+
+		exit();
+	}
+
 	public function auth_reg(&$view)
 	{
 		$view->title = 'iWEA — Авторизація';
@@ -154,14 +198,16 @@ class Action extends Helper
 
 	public function all(&$view)
 	{
-		$weather = $this->model->getWeatherAll();
+
 		$date_now = new DateTime();
 		$today = true;
 
+		$param_d = '';
 		if (isset($this->arg)) {
 			try {
 				$get_string = $this->arg;
 				if (!empty($get_string)) {
+					$param_d = '/' . $get_string;
 					$get_string = $this->base64_url_decode($get_string);
 					parse_str($get_string, $get_array);
 					$this->arg = $get_array;
@@ -171,6 +217,8 @@ class Action extends Helper
 				$this->arg = array();
 			}
 		}
+
+		$canonical = Config::get('domen') . "/all{$param_d}";
 
 		if (count($this->arg) > 0) {
 			if (isset($this->arg['d'])) {
@@ -184,13 +232,17 @@ class Action extends Helper
 			}
 		}
 
+		$date_format = $date_now->format('Y-m-d H:i:s');
+
+		$weather = $this->model->getWeatherAll($date_format);
+
 		//$this->var_dump($date_now->format('d m Y'));
 
 		$day_now = $this->getDayUkr($date_now->format('w'));
 		$now_month = $this->getMonthUkr($date_now->format('M'));
 		$now_month_d = $date_now->format('d');
 
-		$view->canonical = Config::get('domen') . '/all';
+		$view->canonical = $canonical;
 		$view->categories = json_encode($weather['categories']);
 		$view->series = json_encode($weather['series']);
 		$view->series_max = json_encode($weather['series_max']);
@@ -204,6 +256,7 @@ class Action extends Helper
 		$page_title = 'Погода сьогодні';
 		if (!$today) {
 			$page_title = "Погода на $now_month, $now_month_d";
+			$view->title = "iWEA — Погода на $now_month, $now_month_d";
 
 		} else {
 			$today_day = new DateTime();

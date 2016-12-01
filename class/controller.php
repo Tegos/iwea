@@ -101,6 +101,11 @@ class Controller extends Helper
 				$act->$action($view);
 				break;
 
+			case 'sitemap':
+				$render_page = $action;
+				$act->$action($view);
+				break;
+
 			case 'set_city_id':
 				$city_id = $_GET['city_id'];
 				setcookie('city_id', (int)$city_id);
@@ -119,8 +124,6 @@ class Controller extends Helper
 
 			case 'set_site_id':
 				$site_id = $_GET['site_id'];
-				$this->var_dump($site_id);
-				//die();
 				setcookie('site_id', (int)$site_id);
 				header("Location: /");
 				break;
