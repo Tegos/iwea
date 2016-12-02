@@ -122,23 +122,41 @@ class Action extends Helper
 
 	public function info(&$view)
 	{
-		$view->title = 'iWEA — Список джерел';
+		$view->title = 'Список джерел';
 		$view->sites = $this->model->getSites();
 		$view->canonical = Config::get('domen') . '/info';
 	}
 
 	public function sitemap()
 	{
-		// TODO: add custom page to sitemap
 		$sitemap = $this->file->get('sitemap');
 		$domen = Config::get('domen');
-		$days = (int)(365 / 2);
+
+		$pages = array('', 'info', 'all', 'analytics', 'search');
+
+		$start = new DateTime('2016-05-12');
+		$end = new DateTime();
+		//
+		$days = $this->dateTimesToDays($start, $end);
 
 		if (!$sitemap) {
 
 			$output = '<?xml version="1.0" encoding="UTF-8"?>';
 			$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">';
 
+			// pages
+			foreach ($pages as $page) {
+				$url = "$domen/$page";
+
+				$output .= '<url>';
+				$output .= '<loc>' . $url . '</loc>';
+				$output .= '<changefreq>daily</changefreq>';
+				$output .= '<priority>0.8</priority>';
+				$output .= '</url>';
+			}
+
+
+			// for past dates
 			$date_start = new DateTime();
 			$date_start->modify("-{$days} days");
 
@@ -198,7 +216,7 @@ class Action extends Helper
 
 	public function all(&$view)
 	{
-
+		error_reporting(0);
 		$date_now = new DateTime();
 		$today = true;
 
@@ -241,13 +259,14 @@ class Action extends Helper
 		$day_now = $this->getDayUkr($date_now->format('w'));
 		$now_month = $this->getMonthUkr($date_now->format('M'));
 		$now_month_d = $date_now->format('d');
+		$year_weather = $date_now->format('Y');
 
 		$view->canonical = $canonical;
 		$view->categories = json_encode($weather['categories']);
 		$view->series = json_encode($weather['series']);
 		$view->series_max = json_encode($weather['series_max']);
 		$view->city_name = $weather['city_name'];
-		$view->title = 'iWEA — Погода сьогодні';
+		$view->title = 'Погода сьогодні';
 		$view->day_now = $day_now;
 		$view->forecasts = $weather['forecasts'];
 		$view->now_month = $now_month;
@@ -255,8 +274,8 @@ class Action extends Helper
 
 		$page_title = 'Погода сьогодні';
 		if (!$today) {
-			$page_title = "Погода на $now_month, $now_month_d";
-			$view->title = "iWEA — Погода на $now_month, $now_month_d";
+			$page_title = "Погода на $now_month $now_month_d, $year_weather";
+			$view->title = "Погода на $now_month $now_month_d, $year_weather";
 
 		} else {
 			$today_day = new DateTime();
@@ -283,14 +302,14 @@ class Action extends Helper
 
 	public function analytics(&$view)
 	{
-		$weather = $this->model->getWeatherAll();
+		$weather = $this->model->getWeatherAll(0);
 
 
 		$view->categories = json_encode($weather['categories']);
 		$view->series = json_encode($weather['series']);
 		$view->series_max = json_encode($weather['series_max']);
 		$view->city_name = $weather['city_name'];
-		$view->title = 'iWEA — аналітика';
+		$view->title = 'Аналітика';
 
 		$view->canonical = Config::get('domen') . '/analytics';
 		$view->sites = $this->model->getSites();
