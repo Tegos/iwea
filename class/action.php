@@ -123,10 +123,9 @@ class Action extends Helper
     public function not_found(&$view)
     {
 
-        header('header("HTTP/1.0 404 Not Found");');
+        header('HTTP/1.0 404 Not Found', true, 404);
         $view->title = 'iWEA — 404';
         $view->canonical = Config::get('domen') . '/not_found';
-
     }
 
     public function info(&$view)
