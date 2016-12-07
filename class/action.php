@@ -142,7 +142,7 @@ class Action extends Helper
 
 		$pages = array('', 'info', 'all', 'analytics', 'search');
 
-		$start = new DateTime('2016-05-12');
+		$start = new DateTime(Config::get('start_date'));
 		$end = new DateTime();
 		//
 		$days = $this->dateTimesToDays($start, $end);
@@ -225,6 +225,7 @@ class Action extends Helper
 	public function all(&$view)
 	{
 		error_reporting(0);
+		$start_date = new DateTime(Config::get('start_date'));
 		$date_now = new DateTime();
 		$today = true;
 
@@ -287,7 +288,7 @@ class Action extends Helper
 
 		}
 
-		
+
 		$today_day = new DateTime();
 		$today_format = $today_day->format('Y-m-d');
 
@@ -304,12 +305,16 @@ class Action extends Helper
 
 
 			//prev
-			$array = array('d' => $prev_date_format);
-			$param = http_build_query($array);
-			$param = $this->base64_url_encode($param);
-			$url_prev = "/all/$param";
-			$view->url_prev = $url_prev;
-			$view->title_prev = $this->getTitlePage($prev_date);
+
+			if ($start_date < $prev_date) {
+
+				$array = array('d' => $prev_date_format);
+				$param = http_build_query($array);
+				$param = $this->base64_url_encode($param);
+				$url_prev = "/all/$param";
+				$view->url_prev = $url_prev;
+				$view->title_prev = $this->getTitlePage($prev_date);
+			}
 
 			// next
 			$array = array('d' => $next_date_format);

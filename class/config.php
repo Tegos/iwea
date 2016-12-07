@@ -10,7 +10,7 @@ final class  Config
             'password' => 'tegos',
             'database' => 'noisy2_weather',
             'default_city' => 3,
-            'domen' => 'http://iwea.ml'
+            'start_date' => '2016-05-12'
         );
 
     public static function get($key)
