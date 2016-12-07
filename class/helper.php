@@ -151,6 +151,24 @@ class Helper
 		return intval($end->format('z')) - intval($start->format('z')) + 1;
 	}
 
+	public function getTitlePage($date = 0)
+	{
+		$title = 'Погода сьогодні';
+		if ($date == 0 || !($date instanceof DateTime)) {
+			$date = new DateTime();
+			return $title;
+		}
+
+		$now_month = $this->getMonthUkr($date->format('M'));
+		$now_month_d = $date->format('d');
+		$year_weather = $date->format('Y');
+
+		$title = "Погода на $now_month $now_month_d, $year_weather";
+
+		return $title;
+
+	}
+
 
 }
 
