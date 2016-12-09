@@ -60,7 +60,10 @@ class Helper
 	public function get_web_page($url)
 	{
 		$user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+		$user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
 		$cookie = realpath('') . '/data/cookie.txt';
+		$cert = realpath('') . '/data/cacert.pem';
+
 
 		$options = array(
 
@@ -77,7 +80,8 @@ class Helper
 			CURLOPT_AUTOREFERER => true,
 			CURLOPT_CONNECTTIMEOUT => 3,
 			CURLOPT_TIMEOUT => 5,
-			CURLOPT_MAXREDIRS => 3,
+			CURLOPT_MAXREDIRS => 5,
+			CURLOPT_CAINFO => $cert
 		);
 
 		$ch = curl_init($url);
@@ -117,7 +121,7 @@ class Helper
 			"Sep" => "Вересень",
 			"Oct" => "Жовтень",
 			"Nov" => "Листопад",
-			"Dec" => "Грудень",
+			"Dec" => "Грудень"
 		);
 
 		$result = strtr($month, $trans);
