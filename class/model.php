@@ -93,9 +93,11 @@ class  Model extends Helper
 	public function getCookieSiteId()
 	{
 		//$this->var_dump($_COOKIE['site_id']);
-		$site_id = (int)(isset($_COOKIE['site_id']) ? $_COOKIE['site_id'] : 1);
+		$default_site = (int)Config::get('default_site');
+
+		$site_id = (int)(isset($_COOKIE['site_id']) ? $_COOKIE['site_id'] : $default_site);
 		if ($site_id < 1) {
-			$site_id = 1;
+			$site_id = $default_site;
 		}
 		return $site_id;
 	}
