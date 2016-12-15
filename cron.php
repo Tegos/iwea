@@ -21,17 +21,18 @@ foreach ($query->rows as $result) {
 $sites = $model->getSites();
 
 foreach ($sites as $site) {
-	//if ($site['name'] == 'Meteoprog')
-	if (class_exists($site['name'])) {
-		$site_class = new $site['name']();
+	if ($site['name'] == 'YahooWeather')
+		if (class_exists($site['name'])) {
+			$site_class = new $site['name']();
 
-		foreach ($cities as $city) {
-			$site_class->buildQuery($city);
-			$site_class->setSiteId($site['id']);
-			$site_class->setCityId($city['id']);
-			$site_class->addWeatherData();
+			foreach ($cities as $city) {
+				$site_class->buildQuery($city);
+				$site_class->setSiteId($site['id']);
+				$site_class->setCityId($city['id']);
+				$site_class->addWeatherData();
+				break;
+			}
 		}
-	}
 }
 
 echo "<br>Час виконання: " . round(microtime(true) - $start, 4) . ' с.';
