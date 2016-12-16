@@ -117,3 +117,4 @@ ExpiresDefault "access 3 days"
 </FilesMatch>
 
 
+php_value allow_url_fopen On

@@ -56,6 +56,13 @@ class  Model extends Helper
 		return $query->row['name'];
 	}
 
+	public function getSite($site_id)
+	{
+		$sql = "SELECT * FROM site WHERE id = {$site_id}";
+		$query = $this->db->query($sql);
+		return $query->row;
+	}
+
 	public function getSites($search = false)
 	{
 		$data = array();

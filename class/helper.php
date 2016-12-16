@@ -57,10 +57,18 @@ class Helper
 		return $s;
 	}
 
+	public function getUserAgent($bot = false)
+	{
+		if (!$bot)
+			return $user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+		return $user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+
+	}
+
 	public function get_web_page($url)
 	{
-		$user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
-		$user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+		$user_agent = $this->getUserAgent();
+
 		$cookie = realpath('') . '/data/cookie.txt';
 		$cert = realpath('') . '/data/cacert.pem';
 
@@ -94,6 +102,51 @@ class Helper
 		//$header['errmsg'] = $errmsg;
 		$header['content'] = $content;
 		return $content;
+	}
+
+	public function getWebPageProxy($url = 'http://ifconfig.me/ip', $k = 0)
+	{
+		$proxies = $this
+			->get_web_page('http://gimmeproxy.com/api/getProxy?supportsHttps=true&');
+		$proxies = json_decode($proxies, true);
+		$ipPort = $proxies['ipPort'];
+
+		//$this->var_dump($ipPort);
+		//$this->var_dump($proxies);
+
+		$user_agent = $this->getUserAgent();
+
+		// Create a stream
+		$opts = array(
+			'http' => array(
+				'method' => "GET",
+				'header' => "Accept-language: *\r\n" .
+					//"Cookie: foo=bar\r\n",
+					"User-Agent: {$user_agent}\r\n",
+				//'proxy' => '180.234.223.92:8080',
+				'proxy' => $ipPort,
+			),
+			'ssl' => array(
+				'SNI_enabled' => false
+			)
+		);
+
+		$context = stream_context_create($opts);
+
+		// Open the file using the HTTP headers set above
+		//$url = urlencode($url);
+		$file = file_get_contents($url, false, $context);
+
+		if ($file) {
+			return $file;
+		} else {
+			if ($k < 5) {
+				$k++;
+				$this->getWebPageProxy($url, $k);
+			}
+
+		}
+		return 0;
 	}
 
 	public function getDayUkr($w)
@@ -171,6 +224,27 @@ class Helper
 
 		return $title;
 
+	}
+
+	public function getNextSite($sites)
+	{
+		//$this->var_dump($sites);
+		$f = __DIR__ . '/../data/sync.log';
+		$site = file_get_contents($f);
+
+		//$this->var_dump($site);
+
+		if (in_array($site, $sites)) {
+			return trim($site);
+		}
+		return $sites[0];
+	}
+
+	public function setNextSite($site)
+	{
+		$f = __DIR__ . '/../data/sync.log';
+		$r = @file_put_contents($f, $site);
+		return $r;
 	}
 
 

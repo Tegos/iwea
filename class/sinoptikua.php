@@ -26,7 +26,7 @@ class SinoptikUa extends Helper implements ISiteHelper
 
 		$this->url = 'https://ua.sinoptik.ua/';
 		$this->url .= "погода-{$city_name}/10-днів";
-		var_dump($this->url);
+		//var_dump($this->url);
 	}
 
 

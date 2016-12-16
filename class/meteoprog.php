@@ -31,14 +31,10 @@ class Meteoprog extends Helper implements ISiteHelper
 
 	public function addWeatherData()
 	{
-		var_dump($this->url);
-		$content = $this->get_web_page($this->url);
-
-		//var_dump($content);
+		//var_dump($this->url);
+		$content = $this->getWebPageProxy($this->url);
 
 		$html = simple_html_dom::str_get_html($content);
-
-		echo $content;
 
 		if (!empty($html)) {
 			if (is_object($html) && count($html) > 0) {
