@@ -228,11 +228,8 @@ class Helper
 
 	public function getNextSite($sites)
 	{
-		//$this->var_dump($sites);
-		$f = __DIR__ . '/../data/sync.log';
+		$f = __DIR__ . Config::get('sync_file');
 		$site = file_get_contents($f);
-
-		//$this->var_dump($site);
 
 		if (in_array($site, $sites)) {
 			return trim($site);
@@ -242,8 +239,24 @@ class Helper
 
 	public function setNextSite($site)
 	{
-		$f = __DIR__ . '/../data/sync.log';
+		$f = __DIR__ . Config::get('sync_file');
 		$r = @file_put_contents($f, $site);
+		return $r;
+	}
+
+	public function getStateRun()
+	{
+		$f = __DIR__ . Config::get('state_file');
+		$site = file_get_contents($f);
+
+		return trim($site);
+
+	}
+
+	public function setStateRun($state)
+	{
+		$f = __DIR__ . Config::get('state_file');
+		$r = @file_put_contents($f, $state);
 		return $r;
 	}
 

@@ -36,45 +36,51 @@ class SinoptikUa extends Helper implements ISiteHelper
 		$content = $this->get_web_page($this->url);
 
 
+		//echo $content;
+		//die();
 		$html = simple_html_dom::str_get_html($content);
+		if (!empty($html)) {
+
+			$lists = $html->getElementById('blockDays');
+
+			$tabs = $lists->find('.tabs', 0);
+
+			$days = $tabs->find('.main');
+
+			$begin_date = new DateTime();
+			$i = 0;
+			foreach ($days as $day) {
+				$data_insert = array();
+
+				if ($i == 0) {
+					$dd = $begin_date;
+				} else {
+					$dd = $begin_date->modify('+1 day');
+				}
+
+				$data_insert['site_id'] = (int)$this->site_id;
+				$data_insert['city_id'] = (int)$this->city_id;
+				$data_insert['date'] = $dd->format('Y-m-d');
+
+				$max = trim($day->find('.max span', 0)->plaintext);
+				$min = trim($day->find('.min span', 0)->plaintext);
 
 
-		$lists = $html->getElementById('blockDays');
+				$data_insert['min_temp'] = (int)trim($min, '°C');
+				$data_insert['max_temp'] = (int)trim($max, '°C');
 
-		$tabs = $lists->find('.tabs', 0);
+				//$this->var_dump($data_insert);
+				$this->model->addWeatherRecord($data_insert);
 
-		$days = $tabs->find('.main');
-
-		$begin_date = new DateTime();
-		$i = 0;
-		foreach ($days as $day) {
-			$data_insert = array();
-
-			if ($i == 0) {
-				$dd = $begin_date;
-			} else {
-				$dd = $begin_date->modify('+1 day');
+				$i++;
+				if ($i > $this->days) break;
 			}
 
-			$data_insert['site_id'] = (int)$this->site_id;
-			$data_insert['city_id'] = (int)$this->city_id;
-			$data_insert['date'] = $dd->format('Y-m-d');
-
-			$max = trim($day->find('.max span', 0)->plaintext);
-			$min = trim($day->find('.min span', 0)->plaintext);
-
-
-			$data_insert['min_temp'] = (int)trim($min, '°C');
-			$data_insert['max_temp'] = (int)trim($max, '°C');;
-
-			//$this->var_dump($data_insert);
-			$this->model->addWeatherRecord($data_insert);
-
-			$i++;
-			if ($i > $this->days) break;
+			$html->clear();
+		} else {
+			trigger_error('Не доступний контетн');
 		}
 
-		$html->clear();
 
 	}
 
