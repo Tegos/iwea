@@ -27,6 +27,8 @@ class Interia extends Helper implements ISiteHelper
 
 		$this->url = 'https://pogoda.interia.pl/';
 		$this->url .= "prognoza-dlugoterminowa-{$city_name},cId,{$cid_pl}";
+
+		//$this->var_dump($this->url);
 	}
 
 
@@ -35,7 +37,8 @@ class Interia extends Helper implements ISiteHelper
 		$content = $this->get_web_page($this->url);
 		$html = simple_html_dom::str_get_html($content);
 
-		if (!empty($html)) {
+
+		if (!empty($html) && is_object($html)) {
 
 			$lists = $html->find('.weather-forecast-longterm-list', 0);
 
@@ -47,9 +50,19 @@ class Interia extends Helper implements ISiteHelper
 					$data_insert = array();
 
 					$date = trim($li->find('.date', 0)->plaintext);
+					$day = trim($li->find('.day', 0)->plaintext);
+
+					$date_w = $this->getIndexOfPolishDay($day);
+
 					$date .= '.' . date('Y');
 
 					$DateTime = DateTime::createFromFormat('d.m.Y', $date);
+					$cur_date_w = $DateTime->format('w');
+
+					if ($date_w != $cur_date_w) {
+						$DateTime->modify('+1 year');
+					}
+
 
 					$data_insert['site_id'] = (int)$this->site_id;
 					$data_insert['city_id'] = (int)$this->city_id;

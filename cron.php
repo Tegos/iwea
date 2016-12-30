@@ -33,7 +33,9 @@ try {
 		//if ($site['name'] == $next_site) {
 
 		$site_id = $site['id'];
-		if (class_exists($site['name'])) {
+		if (class_exists($site['name'])
+			//&& $site['name'] == 'Interia'
+		) {
 			$log->i($tag, "Site: {$site['name']}");
 			$site_class = new $site['name']();
 

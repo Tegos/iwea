@@ -135,7 +135,7 @@ class Helper
 
 		// Open the file using the HTTP headers set above
 		//$url = urlencode($url);
-		$file = file_get_contents($url, false, $context);
+		$file = @file_get_contents($url, false, $context);
 
 		if ($file) {
 			return $file;
@@ -258,6 +258,32 @@ class Helper
 		$f = __DIR__ . Config::get('state_file');
 		$r = @file_put_contents($f, $state);
 		return $r;
+	}
+
+	public function getPolishDays($small = false)
+	{
+		if ($small) {
+			return array('Nd', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb');
+		}
+
+		return array(
+			'Niedziela',
+			'Poniedziałek',
+			'Wtorek',
+			'Środa', 'Czwartek',
+			'Piątek',
+			'Sobota');
+	}
+
+	public function getIndexOfPolishDay($day)
+	{
+		$days = $this->getPolishDays();
+		for ($i = 0; $i < count($days); $i++) {
+			if (strcasecmp($days[$i], $day) == 0) {
+				return $i;
+			}
+		}
+		return -1;
 	}
 
 
