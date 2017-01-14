@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="Uk">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,37 +23,39 @@
     <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon"/>
 
     <!--link rel="stylesheet" href="/assets/css/style.css" media="all"/-->
+    <style>
+        html {
+            background: #fff;
+            color: #000 !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
 
+        html,
+        button,
+        input,
+        select,
+        textarea {
+            font-family: Roboto;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .home-background {
+            background-image: url('/assets/images/banner.png');
+            background-size: cover;
+        }
+    </style>
 </head>
 
-<style>
-    html {
-        background: #fff;
-        color: #000 !important;
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-    }
 
-    html,
-    button,
-    input,
-    select,
-    textarea {
-        font-family: Roboto;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .home-background {
-        background-image: url('/assets/images/banner.png');
-        background-size: cover;
-    }
-</style>
 
 
 <body>
+
+
 
 <div class="site-content">
     <div class="site-header">

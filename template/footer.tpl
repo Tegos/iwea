@@ -88,7 +88,7 @@
 <!--script async defer src="/assets/js/plugins.js"></script>
 <script async defer src="/assets/js/jquery.easy-autocomplete.js"></script>
 <script async defer src="/assets/js/jquery.ddslick.min.js"></script>
-<script async defer src="/assets/js/app.js"></script>
+<script async defer src="/assets/js/app.js"></script-->
 <!--script src="/assets/js/path.js"></script-->
 <!--script async defer src="/assets/js/graph.js"></script-->
 <!--script async defer src="/assets/js/functions.js"></script-->

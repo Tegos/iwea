@@ -3,7 +3,7 @@
 
 <div class="hero home-background">
     <div class="container">
-        <form action="" method="get" class="find-location">
+        <form action="#" method="get" class="find-location">
             <input name="search" type="text" id="location-search" placeholder="Ваше місцезнаходження...">
             <input type="hidden" name="action" value="search"/>
             <input type="submit" value="Шукати">

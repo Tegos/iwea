@@ -47,3 +47,7 @@ fabric.properties
 
 .gitignore
 file/
+!/composer.phar
+/composer.phar
+/composer.lock
+/vendor/
