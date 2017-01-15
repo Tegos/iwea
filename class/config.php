@@ -12,7 +12,7 @@ final class  Config
 			'default_city' => 3,
 			'default_site' => 2,
 			'start_date' => '2016-05-12',
-			'domen' => 'http://iwea.ml',
+			'domen' => 'https://iwea.ml',
 			'state_file' => '/../data/state',
 			'sync_file' => '/../data/sync.log'
 		);

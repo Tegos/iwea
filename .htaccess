@@ -1,5 +1,6 @@
 RewriteEngine On
 
+
 RewriteRule ^sitemap.xml$ /?action=sitemap [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -9,6 +10,8 @@ RewriteRule ^([^/]+)$ /?action=$1 [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/([^/]+)$ /?action=$1&arg=$2 [L]
+
+
 
 <ifModule mod_gzip.c>
 mod_gzip_on Yes

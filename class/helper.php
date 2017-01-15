@@ -205,7 +205,9 @@ class Helper
 
 	public function dateTimesToDays($start, $end)
 	{
-		return intval($end->format('z')) - intval($start->format('z')) + 1;
+		$difference = $end->diff($start);
+		$days = (int)$difference->format('%a');
+		return $days;
 	}
 
 	public function getTitlePage($date = 0)

@@ -140,6 +140,7 @@ class Action extends Helper
 		$sitemap = $this->file->get('sitemap');
 		$domen = Config::get('domen');
 
+
 		$pages = array('', 'info', 'all', 'analytics', 'search');
 
 		$start = new DateTime(Config::get('start_date'));
@@ -163,6 +164,8 @@ class Action extends Helper
 				$output .= '</url>';
 			}
 
+			//$this->var_dump($days);
+			//exit();
 
 			// for past dates
 			$date_start = new DateTime();

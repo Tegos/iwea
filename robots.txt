@@ -33,7 +33,7 @@ Disallow: /*image*
 Disallow: /*price*
 
 
-Host: iwea.ml
+
 
 User-agent: Googlebot-Image
 
@@ -44,4 +44,5 @@ User-agent: YandexImages
 Disallow: /
 Allow: /*image*
 
-Sitemap: http://iwea.ml/sitemap.xml
+Host: https://iwea.ml
+Sitemap: https://iwea.ml/sitemap.xml
