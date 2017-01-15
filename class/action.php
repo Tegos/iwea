@@ -86,8 +86,9 @@ class Action extends Helper
 
 	public function home(&$view)
 	{
+		$s = '\'now\', new DateTimeZone(\'Europe/Kiev\')';
 		$weather = $this->model->getWeather();
-		$date_now = new DateTime();
+		$date_now = $this->getToday();
 		$day_now = $this->getDayUkr($date_now->format('w'));
 		$now_month = $this->getMonthUkr($date_now->format('M'));
 		$now_month_d = $date_now->format('d');
@@ -229,7 +230,7 @@ class Action extends Helper
 	{
 		error_reporting(0);
 		$start_date = new DateTime(Config::get('start_date'));
-		$date_now = new DateTime();
+		$date_now = $this->getToday();
 		$today = true;
 
 		$param_d = '';
@@ -292,7 +293,7 @@ class Action extends Helper
 		}
 
 
-		$today_day = new DateTime();
+		$today_day = $this->getToday();
 		$today_format = $today_day->format('Y-m-d');
 
 		if ($date_format != $today_format) {

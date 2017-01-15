@@ -14,7 +14,8 @@ final class  Config
 			'start_date' => '2016-05-12',
 			'domen' => 'https://iwea.ml',
 			'state_file' => '/../data/state',
-			'sync_file' => '/../data/sync.log'
+			'sync_file' => '/../data/sync.log',
+			'timeZone' => 'Europe/Kiev'
 		);
 
 	public static function get($key)

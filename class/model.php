@@ -253,8 +253,8 @@ class  Model extends Helper
 			$begin_date = new DateTime($date);
 			$start_date = new DateTime($date);
 		} else {
-			$begin_date = new DateTime();
-			$start_date = new DateTime();
+			$begin_date = $this->getToday();
+			$start_date = $this->getToday();
 		}
 
 
@@ -391,8 +391,9 @@ class  Model extends Helper
 		$city_id = $this->getCookieCityId();
 		$site_id = $this->getCookieSiteId();
 
-		$begin_date = new DateTime();
-		$start_date = new DateTime();
+		$begin_date = $this->getToday();
+		$start_date = $this->getToday();
+
 		$end_date = $begin_date->modify('+6 day');
 
 		$sql = "SELECT `site_id`, site.name `city_id`, `date`,

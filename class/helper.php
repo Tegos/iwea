@@ -288,6 +288,16 @@ class Helper
 		return -1;
 	}
 
+	public function getToday()
+	{
+		$today = new DateTime('now',
+			new DateTimeZone(
+				Config::get('timeZone')
+			)
+		);
+		return $today;
+	}
+
 
 }
 
