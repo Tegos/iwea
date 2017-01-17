@@ -17,6 +17,8 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+/.idea/
+/smartoptimizer/
 
 # Gradle:
 .idea/gradle.xml
@@ -51,3 +53,6 @@ file/
 /composer.phar
 /composer.lock
 /vendor/
+.idea/codeStyleSettings.xml
+.idea/composerJson.xml
+smartoptimizer/cache/
