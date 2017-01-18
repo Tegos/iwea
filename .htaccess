@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,QSA]
 
 
 RewriteRule ^sitemap.xml$ /?action=sitemap [L]
@@ -98,9 +100,8 @@ ExpiresDefault "access 3 days"
 		ExpiresDefault "access plus 10 years"
 	</FilesMatch>
 </IfModule>
-<IfModule mod_rewrite.c>
-	RewriteEngine On
 
+<IfModule mod_rewrite.c>
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*\.(js|css))$ smartoptimizer/?$1
@@ -115,6 +116,7 @@ ExpiresDefault "access 3 days"
 		RewriteRule ^(.*\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico))$ smartoptimizer/?$1
 	</IfModule>
 </IfModule>
+
 <FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
 	FileETag none
 </FilesMatch>
