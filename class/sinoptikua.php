@@ -38,7 +38,9 @@ class SinoptikUa extends Helper implements ISiteHelper
 
 		//echo $content;
 		//die();
-		$html = simple_html_dom::str_get_html($content);
+		$html = new simple_html_dom();
+		$html->load($content);
+		//$html = simple_html_dom->str_get_html($content);
 		if (!empty($html)) {
 
 			$lists = $html->getElementById('blockDays');

@@ -34,7 +34,9 @@ class Meteoprog extends Helper implements ISiteHelper
 		//var_dump($this->url);
 		$content = $this->getWebPageProxy($this->url);
 
-		$html = simple_html_dom::str_get_html($content);
+		$html = new simple_html_dom();
+		$html->load($content);
+		//$html = simple_html_dom::str_get_html($content);
 
 		if (!empty($html)) {
 			if (is_object($html) && count($html) > 0) {

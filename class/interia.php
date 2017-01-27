@@ -35,7 +35,9 @@ class Interia extends Helper implements ISiteHelper
 	public function addWeatherData()
 	{
 		$content = $this->get_web_page($this->url);
-		$html = simple_html_dom::str_get_html($content);
+		$html = new simple_html_dom();
+		$html->load($content);
+		//$html = simple_html_dom::str_get_html($content);
 
 
 		if (!empty($html) && is_object($html)) {
