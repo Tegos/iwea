@@ -34,7 +34,7 @@ try {
 
 		$site_id = $site['id'];
 		if (class_exists($site['name'])
-			//&& $site['name'] == 'SinoptikUa'
+			//&& $site['name'] == 'Meteoprog'
 		) {
 			$log->i($tag, "Site: {$site['name']}");
 			$site_class = new $site['name']();

@@ -109,7 +109,17 @@ class Helper
 		$proxies = $this
 			->get_web_page('http://gimmeproxy.com/api/getProxy?supportsHttps=true&');
 		$proxies = json_decode($proxies, true);
-		$ipPort = $proxies['ipPort'];
+
+
+		if (!key_exists('ipPort', $proxies)) {
+			$ipPort = $this->getIpPort();
+		} else {
+			$ipPort = $proxies['ipPort'];
+		}
+
+		if (!$this->isValidProxy($ipPort)) {
+			return 0;
+		}
 
 		//$this->var_dump($ipPort);
 		//$this->var_dump($proxies);
@@ -117,7 +127,7 @@ class Helper
 		$user_agent = $this->getUserAgent();
 
 		// Create a stream
-		$opts = array(
+		$opts = [
 			'http' => array(
 				'method' => "GET",
 				'header' => "Accept-language: *\r\n" .
@@ -129,7 +139,7 @@ class Helper
 			'ssl' => array(
 				'SNI_enabled' => false
 			)
-		);
+		];
 
 		$context = stream_context_create($opts);
 
@@ -147,6 +157,55 @@ class Helper
 
 		}
 		return 0;
+	}
+
+	public function isValidProxy($proxy)
+	{
+		$expl = explode(':', $proxy);
+		if (empty($expl[0]) || empty($expl[1])) {
+			return false;
+		}
+		return true;
+	}
+
+	public function getIpPort()
+	{
+		$proxies = [
+			'freeproxy' =>
+				[
+					'url' => 'http://www.freeproxy-list.ru/api/proxy?anonymity=false&count=1&token=demo',
+					'ip_field' => null,
+					'json' => false
+				],
+			'getproxylist' =>
+				[
+					'url' => 'https://api.getproxylist.com/proxy?allowsHttps=1',
+					'ip_field' => 'ip',
+					'port' => 'port',
+					'json' => true
+				]
+		];
+
+		$rand = (float)rand() / (float)getrandmax();
+		if ($rand < 0.7)
+			$result = 'freeproxy';
+		else
+			$result = 'getproxylist';
+
+		//$proxy = $proxies[array_rand($proxies, 1)];
+		$proxy = $proxies[$result];
+
+		$response = $this->get_web_page($proxy['url']);
+
+		if ($proxy['json']) {
+			$response = json_decode($response, true);
+
+			$ipPort = "{$response[$proxy['ip']]}:{$response[$proxy['port']]}";
+		} else {
+			$ipPort = $response;
+		}
+
+		return $ipPort;
 	}
 
 	public function getDayUkr($w)
