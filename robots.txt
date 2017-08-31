@@ -44,5 +44,5 @@ User-agent: YandexImages
 Disallow: /
 Allow: /*image*
 
-Host: iwea.ml
+Host: https://iwea.ml
 Sitemap: https://iwea.ml/sitemap.xml
