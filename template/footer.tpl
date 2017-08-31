@@ -33,11 +33,6 @@
 </div>
 
 
-<!--[if lt IE 9]>
-<script src="/assets/js/ie-support/html5.js"></script>
-<script src="/assets/js/ie-support/respond.js"></script>
-<![endif]-->
-
 <script async src="/assets/js/yepnope.js" onload="loadJSCss();"></script>
 
 <script>
@@ -45,8 +40,11 @@
 
 
 		yepnope.injectJs('/assets/js/jquery-1.11.1.min.js', function () {
-			yepnope.injectJs('/assets/js//highcharts.js');
-			yepnope.injectJs('/assets/js/exporting.js');
+			yepnope.injectJs('/assets/js/highcharts.js', function () {
+				yepnope.injectJs('/assets/js/exporting.js');
+				yepnope.injectJs('/assets/js/chart_setting.js');
+			});
+
 
 			yepnope.injectJs('/assets/js/plugins.js');
 
@@ -55,7 +53,7 @@
 			yepnope.injectJs('/assets/js/app.js');
 
 			yepnope.injectJs('/assets/js/functions.js');
-			yepnope.injectJs('/assets/js/chart_setting.js');
+
 
 			yepnope.injectJs('/assets/js/main.js');
 
@@ -132,6 +130,7 @@
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
+	/*
 	(function (d, w, c) {
 		(w[c] = w[c] || []).push(function () {
 			try {
@@ -162,10 +161,8 @@
 			f();
 		}
 	})(document, window, "yandex_metrika_callbacks");
+	*/
 </script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/38292185" style="position:absolute; left:-9999px;" alt="Yandex"/></div>
-</noscript>
 <!-- /Yandex.Metrika counter -->
 
 <script type="application/ld+json">
